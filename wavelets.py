@@ -34,8 +34,7 @@ class Ricker:
         ax1.set_title('Ricker Spectrum')
         self.canvas.figure.set_tight_layout(True)
         self.canvas.draw()
-        
-        
+                
 class Butterworth:
     def __init__(self, high_freq, low_freq, samples, dt, canvas):
         self.high_freq = high_freq
@@ -76,3 +75,5 @@ class Butterworth:
         ax1.set_title('Butterworth Spectrum')
         self.canvas.figure.set_tight_layout(True)
         self.canvas.draw()
+        
+# class 

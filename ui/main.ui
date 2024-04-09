@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1004</width>
-    <height>788</height>
+    <width>1092</width>
+    <height>850</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -166,7 +166,7 @@ QPushButton:hover {
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1004</width>
+     <width>1092</width>
      <height>21</height>
     </rect>
    </property>
@@ -216,7 +216,7 @@ QPushButton:hover {
           <x>0</x>
           <y>0</y>
           <width>230</width>
-          <height>705</height>
+          <height>767</height>
          </rect>
         </property>
         <layout class="QHBoxLayout" name="horizontalLayout_3">
@@ -249,18 +249,6 @@ QPushButton:hover {
            <layout class="QHBoxLayout" name="horizontalLayout_4">
             <item>
              <layout class="QFormLayout" name="formLayout">
-              <item row="1" column="0" colspan="2">
-               <widget class="QComboBox" name="waveletSelector">
-                <property name="font">
-                 <font>
-                  <pointsize>12</pointsize>
-                 </font>
-                </property>
-                <property name="statusTip">
-                 <string>Choose between differents wavelets to plot</string>
-                </property>
-               </widget>
-              </item>
               <item row="0" column="0" colspan="2">
                <widget class="QLabel" name="label">
                 <property name="styleSheet">
@@ -270,6 +258,18 @@ QPushButton:hover {
                 </property>
                 <property name="text">
                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:600;&quot;&gt;Wavelet&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="0" colspan="2">
+               <widget class="QComboBox" name="waveletSelector">
+                <property name="font">
+                 <font>
+                  <pointsize>12</pointsize>
+                 </font>
+                </property>
+                <property name="statusTip">
+                 <string>Choose between differents wavelets to plot</string>
                 </property>
                </widget>
               </item>
@@ -292,28 +292,6 @@ QPushButton:hover {
                 </property>
                </widget>
               </item>
-              <item row="5" column="0" colspan="2">
-               <widget class="QLineEdit" name="lowFreqInput">
-                <property name="toolTip">
-                 <string>Enter the low frequency, if needed</string>
-                </property>
-               </widget>
-              </item>
-              <item row="11" column="0" colspan="2">
-               <widget class="QLineEdit" name="samplesInput"/>
-              </item>
-              <item row="10" column="0" colspan="2">
-               <widget class="QLabel" name="label_4">
-                <property name="styleSheet">
-                 <string notr="true">QLabel {
-	border: None;
-}</string>
-                </property>
-                <property name="text">
-                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Samples&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                </property>
-               </widget>
-              </item>
               <item row="4" column="0" colspan="2">
                <widget class="QLabel" name="lowFreqLabel">
                 <property name="styleSheet">
@@ -326,30 +304,10 @@ QPushButton:hover {
                 </property>
                </widget>
               </item>
-              <item row="12" column="0" colspan="2">
-               <widget class="QLabel" name="label_5">
-                <property name="styleSheet">
-                 <string notr="true">QLabel {
-	border: None;
-}</string>
-                </property>
-                <property name="text">
-                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Time (ms)&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                </property>
-               </widget>
-              </item>
-              <item row="13" column="0" colspan="2">
-               <widget class="QLineEdit" name="timeInput"/>
-              </item>
-              <item row="14" column="0" colspan="2">
-               <widget class="QPushButton" name="plotWavButton">
-                <property name="font">
-                 <font>
-                  <pointsize>12</pointsize>
-                 </font>
-                </property>
-                <property name="text">
-                 <string>Plot</string>
+              <item row="5" column="0" colspan="2">
+               <widget class="QLineEdit" name="lowFreqInput">
+                <property name="toolTip">
+                 <string>Enter the low frequency, if needed</string>
                 </property>
                </widget>
               </item>
@@ -383,6 +341,51 @@ QPushButton:hover {
               <item row="9" column="0" colspan="2">
                <widget class="QLineEdit" name="frequency4Input"/>
               </item>
+              <item row="10" column="0" colspan="2">
+               <widget class="QLabel" name="label_4">
+                <property name="styleSheet">
+                 <string notr="true">QLabel {
+	border: None;
+}</string>
+                </property>
+                <property name="text">
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Samples&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                </property>
+               </widget>
+              </item>
+              <item row="11" column="0" colspan="2">
+               <widget class="QLineEdit" name="samplesInput"/>
+              </item>
+              <item row="12" column="0" colspan="2">
+               <widget class="QLabel" name="label_5">
+                <property name="styleSheet">
+                 <string notr="true">QLabel {
+	border: None;
+}</string>
+                </property>
+                <property name="text">
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Time (ms)&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                </property>
+               </widget>
+              </item>
+              <item row="13" column="0" colspan="2">
+               <widget class="QLineEdit" name="timeInput"/>
+              </item>
+              <item row="14" column="0" colspan="2">
+               <widget class="QPushButton" name="plotWavButton">
+                <property name="enabled">
+                 <bool>false</bool>
+                </property>
+                <property name="font">
+                 <font>
+                  <pointsize>12</pointsize>
+                 </font>
+                </property>
+                <property name="text">
+                 <string>Plot</string>
+                </property>
+               </widget>
+              </item>
              </layout>
             </item>
            </layout>
@@ -401,6 +404,25 @@ QPushButton:hover {
    </property>
   </action>
  </widget>
+ <tabstops>
+  <tabstop>highFreqInput</tabstop>
+  <tabstop>lowFreqInput</tabstop>
+  <tabstop>frequency3Input</tabstop>
+  <tabstop>frequency4Input</tabstop>
+  <tabstop>samplesInput</tabstop>
+  <tabstop>timeInput</tabstop>
+  <tabstop>plotWavButton</tabstop>
+  <tabstop>homeButton</tabstop>
+  <tabstop>backButton</tabstop>
+  <tabstop>forwardButton</tabstop>
+  <tabstop>panButton</tabstop>
+  <tabstop>zoomButton</tabstop>
+  <tabstop>configureSubPlots</tabstop>
+  <tabstop>editButton</tabstop>
+  <tabstop>saveButton</tabstop>
+  <tabstop>waveletSelector</tabstop>
+  <tabstop>scrollArea</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

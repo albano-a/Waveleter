@@ -3,7 +3,7 @@ from PySide6.QtWidgets import QApplication, QMainWindow, QVBoxLayout, QMessageBo
 from interface.mainw import Ui_MainWindowWaveleter
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg, NavigationToolbar2QT
 from matplotlib.figure import Figure
-from wavelets import Ricker, Butterworth
+from wavelets import Ricker, Butterworth, Ormsby
 
 class MainWin(QMainWindow, Ui_MainWindowWaveleter):
     def __init__(self):
@@ -46,6 +46,8 @@ class MainWin(QMainWindow, Ui_MainWindowWaveleter):
         self.figure.clear()
         self.high_freq = self.highFreqInput.text()
         self.low_freq = self.lowFreqInput.text()
+        self.high_cutoff_freq = self.frequency3Input.text()
+        self.low_cutoff_freq = self.frequency4Input.text()
         self.samples = self.samplesInput.text()
         self.dt = self.timeInput.text()
         self.wavelet = self.waveletSelector.currentText()
@@ -77,7 +79,15 @@ class MainWin(QMainWindow, Ui_MainWindowWaveleter):
                 )
                 
         if self.wavelet == 'Ormsby':
-            pass
+            self.plottinOrmsby(
+                self.high_freq,
+                self.low_freq,
+                self.high_cutoff_freq,
+                self.low_cutoff_freq,
+                self.samples,
+                self.dt,
+                self.canvas
+            )
 
     def plottingRicker(self, high_freq, samples, time, canvas):
         self.ricker = Ricker(
@@ -98,22 +108,36 @@ class MainWin(QMainWindow, Ui_MainWindowWaveleter):
         )
         return self.butterworth.plotButter()
     
+    def plottinOrmsby(self, high_freq, low_freq, high_cutoff_freq, low_cutoff_freq, samples, time, canvas):
+        self.ormsby = Ormsby(
+            float(high_freq),
+            float(low_freq),
+            float(high_cutoff_freq),
+            float(low_cutoff_freq),
+            int(samples),
+            float(time),
+            canvas
+        )
+        return self.ormsby.plotOrmsby()
+    
     def toggleSideBar(self):
         if self.dockWidget.isVisible():
             self.dockWidget.hide()
         else:
-            self.dockWidget.show()
+            self.dockWidget.show() 
     
     def on_waveletSelector_changed(self):
         # Clear the output
         self.highFreqInput.setText("")
         self.lowFreqInput.setText("")
         if self.waveletSelector.currentText() == 'Ormsby':
-            
+            self.highFreqLabel.setText(u"<html><head/><body><p align=\"center\"><span style=\" font-size:12pt;\">High-pass Frequency</span></p></body></html>")
+            self.lowFreqLabel.setText(u"<html><head/><body><p align=\"center\"><span style=\" font-size:12pt;\">Low-pass Frequency</span></p></body></html>")
             self.labelf3.show()
             self.frequency3Input.show()
             self.labelf4.show()
             self.frequency4Input.show()
+            
         else:
             self.labelf3.hide()
             self.frequency3Input.hide()
@@ -121,6 +145,8 @@ class MainWin(QMainWindow, Ui_MainWindowWaveleter):
             self.frequency4Input.hide()
             
         if self.waveletSelector.currentText() == 'Butterworth':
+            self.highFreqLabel.setText(u"<html><head/><body><p align=\"center\"><span style=\" font-size:12pt;\">High Frequency</span></p></body></html>")
+            self.lowFreqLabel.setText(u"<html><head/><body><p align=\"center\"><span style=\" font-size:12pt;\">Low Frequency</span></p></body></html>")
             self.lowFreqLabel.show()
             self.lowFreqInput.show()
         else:
@@ -130,7 +156,7 @@ class MainWin(QMainWindow, Ui_MainWindowWaveleter):
         if self.waveletSelector.currentText() == 'Ricker':
             self.highFreqLabel.setText(u"<html><head/><body><p align=\"center\"><span style=\" font-size:12pt;\">Peak Frequency</span></p></body></html>")
         else:
-            self.highFreqLabel.setText(u"<html><head/><body><p align=\"center\"><span style=\" font-size:12pt;\">High Frequency</span></p></body></html>")
+            #self.highFreqLabel.setText(u"<html><head/><body><p align=\"center\"><span style=\" font-size:12pt;\">High Frequency</span></p></body></html>")
             self.lowFreqLabel.show()
             self.lowFreqInput.show()
     

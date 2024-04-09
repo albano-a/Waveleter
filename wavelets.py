@@ -1,3 +1,4 @@
+import time
 import pywt
 import numpy as np
 from scipy import signal
@@ -76,4 +77,41 @@ class Butterworth:
         self.canvas.figure.set_tight_layout(True)
         self.canvas.draw()
         
-# class 
+class Ormsby:
+    def __init__(self, high_freq, low_freq, high_cutoff_freq, low_cutoff_freq, samples, time, canvas):
+        self.low_cut_freq = low_cutoff_freq
+        self.low_pass_freq = low_freq
+        self.high_pass_freq = high_freq
+        self.high_cut_freq = high_cutoff_freq
+        self.samples = samples
+        self.time = time
+        self.canvas = canvas
+        
+    def waveletOrmsby(self):
+        twlet = (np.arange(self.samples) * (self.time / 1000))
+        twlet = np.concatenate((np.flipud(-twlet[1:]), twlet), axis=0)
+
+        first = ( ((np.pi*self.high_cut_freq)**2) / (np.pi*self.high_cut_freq - np.pi*self.high_pass_freq)) * (pow(np.sinc(self.high_cut_freq*twlet),2))
+        second = ( ((np.pi*self.high_pass_freq)**2) / (np.pi*self.high_cut_freq - np.pi*self.high_pass_freq)) * (pow(np.sinc(self.high_pass_freq*twlet),2))
+        third = ( ((np.pi*self.low_pass_freq)**2) / (np.pi*self.low_pass_freq - np.pi*self.low_cut_freq)) * (pow(np.sinc(self.low_pass_freq*twlet), 2))
+        fourth = ( ((np.pi*self.low_cut_freq)**2) / (np.pi*self.low_pass_freq - np.pi*self.low_cut_freq)) * (pow(np.sinc(self.low_cut_freq*twlet), 2))
+
+        wvlet = ((first - second) - (third - fourth))
+        
+        return twlet, wvlet
+    
+    def plotOrmsby(self):
+        twlet, wvlet = self.waveletOrmsby()
+
+        fft_o = abs(np.fft.rfft(wvlet))
+        freqs_o = np.fft.rfftfreq(twlet.shape[0], d=4/1000)
+        fft_o = fft_o / np.max(fft_o)
+
+        ax = self.canvas.figure.add_subplot(211)
+        ax.plot(twlet, wvlet)
+        ax.set_title('Ormsby Wavelet')
+        ax1 = self.canvas.figure.add_subplot(212)
+        ax1.plot(freqs_o, fft_o)
+        ax1.set_title('Ormsby Spectrum')
+        self.canvas.figure.set_tight_layout(True)
+        self.canvas.draw()

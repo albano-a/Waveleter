@@ -25,12 +25,7 @@
 
 QPushButton:hover {
     background: qlineargradient(spread:pad, x1:0.454545, y1:0, x2:0.454545, y2:1, stop:0 rgba(254, 254, 254, 255), stop:1 rgba(248, 248, 248, 255));
-}
-
-QPushButton:pressed {
-    
-}
-</string>
+}</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout">
@@ -65,6 +60,18 @@ QPushButton:pressed {
        <enum>QFrame::Raised</enum>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_2">
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
+        <number>0</number>
+       </property>
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout">
          <item>
@@ -175,7 +182,7 @@ QPushButton:pressed {
   <widget class="QDockWidget" name="dockWidget">
    <property name="minimumSize">
     <size>
-     <width>200</width>
+     <width>250</width>
      <height>320</height>
     </size>
    </property>
@@ -208,7 +215,7 @@ QPushButton:pressed {
          <rect>
           <x>0</x>
           <y>0</y>
-          <width>180</width>
+          <width>230</width>
           <height>705</height>
          </rect>
         </property>
@@ -244,6 +251,11 @@ QPushButton:pressed {
              <layout class="QFormLayout" name="formLayout">
               <item row="1" column="0" colspan="2">
                <widget class="QComboBox" name="waveletSelector">
+                <property name="font">
+                 <font>
+                  <pointsize>12</pointsize>
+                 </font>
+                </property>
                 <property name="statusTip">
                  <string>Choose between differents wavelets to plot</string>
                 </property>
@@ -262,14 +274,14 @@ QPushButton:pressed {
                </widget>
               </item>
               <item row="2" column="0" colspan="2">
-               <widget class="QLabel" name="label_2">
+               <widget class="QLabel" name="highFreqLabel">
                 <property name="styleSheet">
                  <string notr="true">QLabel {
 	border: None;
 }</string>
                 </property>
                 <property name="text">
-                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;High Freq.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;High Frequency&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                 </property>
                </widget>
               </item>
@@ -287,10 +299,10 @@ QPushButton:pressed {
                 </property>
                </widget>
               </item>
-              <item row="7" column="0" colspan="2">
+              <item row="11" column="0" colspan="2">
                <widget class="QLineEdit" name="samplesInput"/>
               </item>
-              <item row="6" column="0" colspan="2">
+              <item row="10" column="0" colspan="2">
                <widget class="QLabel" name="label_4">
                 <property name="styleSheet">
                  <string notr="true">QLabel {
@@ -303,18 +315,18 @@ QPushButton:pressed {
                </widget>
               </item>
               <item row="4" column="0" colspan="2">
-               <widget class="QLabel" name="label_3">
+               <widget class="QLabel" name="lowFreqLabel">
                 <property name="styleSheet">
                  <string notr="true">QLabel {
 	border: None;
 }</string>
                 </property>
                 <property name="text">
-                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Low Freq.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Low Frequency&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                 </property>
                </widget>
               </item>
-              <item row="8" column="0" colspan="2">
+              <item row="12" column="0" colspan="2">
                <widget class="QLabel" name="label_5">
                 <property name="styleSheet">
                  <string notr="true">QLabel {
@@ -326,10 +338,10 @@ QPushButton:pressed {
                 </property>
                </widget>
               </item>
-              <item row="9" column="0" colspan="2">
+              <item row="13" column="0" colspan="2">
                <widget class="QLineEdit" name="timeInput"/>
               </item>
-              <item row="10" column="0" colspan="2">
+              <item row="14" column="0" colspan="2">
                <widget class="QPushButton" name="plotWavButton">
                 <property name="font">
                  <font>
@@ -340,6 +352,36 @@ QPushButton:pressed {
                  <string>Plot</string>
                 </property>
                </widget>
+              </item>
+              <item row="6" column="0" colspan="2">
+               <widget class="QLabel" name="labelf3">
+                <property name="styleSheet">
+                 <string notr="true">QLabel {
+	border: None;
+}</string>
+                </property>
+                <property name="text">
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;High Cutoff Frequency&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                </property>
+               </widget>
+              </item>
+              <item row="7" column="0" colspan="2">
+               <widget class="QLineEdit" name="frequency3Input"/>
+              </item>
+              <item row="8" column="0" colspan="2">
+               <widget class="QLabel" name="labelf4">
+                <property name="styleSheet">
+                 <string notr="true">QLabel {
+	border: None;
+}</string>
+                </property>
+                <property name="text">
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Low Cutoff Frequency&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                </property>
+               </widget>
+              </item>
+              <item row="9" column="0" colspan="2">
+               <widget class="QLineEdit" name="frequency4Input"/>
               </item>
              </layout>
             </item>

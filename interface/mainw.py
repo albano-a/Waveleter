@@ -38,12 +38,7 @@ class Ui_MainWindowWaveleter(object):
 "\n"
 "QPushButton:hover {\n"
 "    background: qlineargradient(spread:pad, x1:0.454545, y1:0, x2:0.454545, y2:1, stop:0 rgba(254, 254, 254, 255), stop:1 rgba(248, 248, 248, 255));\n"
-"}\n"
-"\n"
-"QPushButton:pressed {\n"
-"    \n"
-"}\n"
-"")
+"}")
         self.actionViewSideBar = QAction(MainWindowWaveleter)
         self.actionViewSideBar.setObjectName(u"actionViewSideBar")
         self.centralwidget = QWidget(MainWindowWaveleter)
@@ -68,6 +63,7 @@ class Ui_MainWindowWaveleter(object):
         self.frame_3.setFrameShadow(QFrame.Raised)
         self.verticalLayout_2 = QVBoxLayout(self.frame_3)
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
+        self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout = QHBoxLayout()
         self.horizontalLayout.setObjectName(u"horizontalLayout")
         self.homeButton = QPushButton(self.frame_3)
@@ -128,7 +124,7 @@ class Ui_MainWindowWaveleter(object):
         MainWindowWaveleter.setStatusBar(self.statusbar)
         self.dockWidget = QDockWidget(MainWindowWaveleter)
         self.dockWidget.setObjectName(u"dockWidget")
-        self.dockWidget.setMinimumSize(QSize(200, 320))
+        self.dockWidget.setMinimumSize(QSize(250, 320))
         self.dockWidget.setMaximumSize(QSize(524287, 524287))
         self.dockWidget.setStyleSheet(u"QDockWidget::title {\n"
 "    background: #f7f7f7;\n"
@@ -142,7 +138,7 @@ class Ui_MainWindowWaveleter(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollAreaWidgetContents = QWidget()
         self.scrollAreaWidgetContents.setObjectName(u"scrollAreaWidgetContents")
-        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 180, 705))
+        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 230, 705))
         self.horizontalLayout_3 = QHBoxLayout(self.scrollAreaWidgetContents)
         self.horizontalLayout_3.setObjectName(u"horizontalLayout_3")
         self.horizontalLayout_3.setContentsMargins(0, 0, 0, 0)
@@ -160,6 +156,9 @@ class Ui_MainWindowWaveleter(object):
         self.formLayout.setObjectName(u"formLayout")
         self.waveletSelector = QComboBox(self.frame_2)
         self.waveletSelector.setObjectName(u"waveletSelector")
+        font = QFont()
+        font.setPointSize(12)
+        self.waveletSelector.setFont(font)
 
         self.formLayout.setWidget(1, QFormLayout.SpanningRole, self.waveletSelector)
 
@@ -171,13 +170,13 @@ class Ui_MainWindowWaveleter(object):
 
         self.formLayout.setWidget(0, QFormLayout.SpanningRole, self.label)
 
-        self.label_2 = QLabel(self.frame_2)
-        self.label_2.setObjectName(u"label_2")
-        self.label_2.setStyleSheet(u"QLabel {\n"
+        self.highFreqLabel = QLabel(self.frame_2)
+        self.highFreqLabel.setObjectName(u"highFreqLabel")
+        self.highFreqLabel.setStyleSheet(u"QLabel {\n"
 "	border: None;\n"
 "}")
 
-        self.formLayout.setWidget(2, QFormLayout.SpanningRole, self.label_2)
+        self.formLayout.setWidget(2, QFormLayout.SpanningRole, self.highFreqLabel)
 
         self.highFreqInput = QLineEdit(self.frame_2)
         self.highFreqInput.setObjectName(u"highFreqInput")
@@ -192,7 +191,7 @@ class Ui_MainWindowWaveleter(object):
         self.samplesInput = QLineEdit(self.frame_2)
         self.samplesInput.setObjectName(u"samplesInput")
 
-        self.formLayout.setWidget(7, QFormLayout.SpanningRole, self.samplesInput)
+        self.formLayout.setWidget(11, QFormLayout.SpanningRole, self.samplesInput)
 
         self.label_4 = QLabel(self.frame_2)
         self.label_4.setObjectName(u"label_4")
@@ -200,15 +199,15 @@ class Ui_MainWindowWaveleter(object):
 "	border: None;\n"
 "}")
 
-        self.formLayout.setWidget(6, QFormLayout.SpanningRole, self.label_4)
+        self.formLayout.setWidget(10, QFormLayout.SpanningRole, self.label_4)
 
-        self.label_3 = QLabel(self.frame_2)
-        self.label_3.setObjectName(u"label_3")
-        self.label_3.setStyleSheet(u"QLabel {\n"
+        self.lowFreqLabel = QLabel(self.frame_2)
+        self.lowFreqLabel.setObjectName(u"lowFreqLabel")
+        self.lowFreqLabel.setStyleSheet(u"QLabel {\n"
 "	border: None;\n"
 "}")
 
-        self.formLayout.setWidget(4, QFormLayout.SpanningRole, self.label_3)
+        self.formLayout.setWidget(4, QFormLayout.SpanningRole, self.lowFreqLabel)
 
         self.label_5 = QLabel(self.frame_2)
         self.label_5.setObjectName(u"label_5")
@@ -216,20 +215,44 @@ class Ui_MainWindowWaveleter(object):
 "	border: None;\n"
 "}")
 
-        self.formLayout.setWidget(8, QFormLayout.SpanningRole, self.label_5)
+        self.formLayout.setWidget(12, QFormLayout.SpanningRole, self.label_5)
 
         self.timeInput = QLineEdit(self.frame_2)
         self.timeInput.setObjectName(u"timeInput")
 
-        self.formLayout.setWidget(9, QFormLayout.SpanningRole, self.timeInput)
+        self.formLayout.setWidget(13, QFormLayout.SpanningRole, self.timeInput)
 
         self.plotWavButton = QPushButton(self.frame_2)
         self.plotWavButton.setObjectName(u"plotWavButton")
-        font = QFont()
-        font.setPointSize(12)
         self.plotWavButton.setFont(font)
 
-        self.formLayout.setWidget(10, QFormLayout.SpanningRole, self.plotWavButton)
+        self.formLayout.setWidget(14, QFormLayout.SpanningRole, self.plotWavButton)
+
+        self.labelf3 = QLabel(self.frame_2)
+        self.labelf3.setObjectName(u"labelf3")
+        self.labelf3.setStyleSheet(u"QLabel {\n"
+"	border: None;\n"
+"}")
+
+        self.formLayout.setWidget(6, QFormLayout.SpanningRole, self.labelf3)
+
+        self.frequency3Input = QLineEdit(self.frame_2)
+        self.frequency3Input.setObjectName(u"frequency3Input")
+
+        self.formLayout.setWidget(7, QFormLayout.SpanningRole, self.frequency3Input)
+
+        self.labelf4 = QLabel(self.frame_2)
+        self.labelf4.setObjectName(u"labelf4")
+        self.labelf4.setStyleSheet(u"QLabel {\n"
+"	border: None;\n"
+"}")
+
+        self.formLayout.setWidget(8, QFormLayout.SpanningRole, self.labelf4)
+
+        self.frequency4Input = QLineEdit(self.frame_2)
+        self.frequency4Input.setObjectName(u"frequency4Input")
+
+        self.formLayout.setWidget(9, QFormLayout.SpanningRole, self.frequency4Input)
 
 
         self.horizontalLayout_4.addLayout(self.formLayout)
@@ -293,7 +316,7 @@ class Ui_MainWindowWaveleter(object):
         self.waveletSelector.setStatusTip(QCoreApplication.translate("MainWindowWaveleter", u"Choose between differents wavelets to plot", None))
 #endif // QT_CONFIG(statustip)
         self.label.setText(QCoreApplication.translate("MainWindowWaveleter", u"<html><head/><body><p align=\"center\"><span style=\" font-size:12pt; font-weight:600;\">Wavelet</span></p></body></html>", None))
-        self.label_2.setText(QCoreApplication.translate("MainWindowWaveleter", u"<html><head/><body><p align=\"center\"><span style=\" font-size:12pt;\">High Freq.</span></p></body></html>", None))
+        self.highFreqLabel.setText(QCoreApplication.translate("MainWindowWaveleter", u"<html><head/><body><p align=\"center\"><span style=\" font-size:12pt;\">High Frequency</span></p></body></html>", None))
 #if QT_CONFIG(tooltip)
         self.highFreqInput.setToolTip(QCoreApplication.translate("MainWindowWaveleter", u"Enter the high frequency or peak frequency of your wavelet", None))
 #endif // QT_CONFIG(tooltip)
@@ -301,8 +324,10 @@ class Ui_MainWindowWaveleter(object):
         self.lowFreqInput.setToolTip(QCoreApplication.translate("MainWindowWaveleter", u"Enter the low frequency, if needed", None))
 #endif // QT_CONFIG(tooltip)
         self.label_4.setText(QCoreApplication.translate("MainWindowWaveleter", u"<html><head/><body><p align=\"center\"><span style=\" font-size:12pt;\">Samples</span></p></body></html>", None))
-        self.label_3.setText(QCoreApplication.translate("MainWindowWaveleter", u"<html><head/><body><p align=\"center\"><span style=\" font-size:12pt;\">Low Freq.</span></p></body></html>", None))
+        self.lowFreqLabel.setText(QCoreApplication.translate("MainWindowWaveleter", u"<html><head/><body><p align=\"center\"><span style=\" font-size:12pt;\">Low Frequency</span></p></body></html>", None))
         self.label_5.setText(QCoreApplication.translate("MainWindowWaveleter", u"<html><head/><body><p align=\"center\"><span style=\" font-size:12pt;\">Time (ms)</span></p></body></html>", None))
         self.plotWavButton.setText(QCoreApplication.translate("MainWindowWaveleter", u"Plot", None))
+        self.labelf3.setText(QCoreApplication.translate("MainWindowWaveleter", u"<html><head/><body><p align=\"center\"><span style=\" font-size:12pt;\">High Cutoff Frequency</span></p></body></html>", None))
+        self.labelf4.setText(QCoreApplication.translate("MainWindowWaveleter", u"<html><head/><body><p align=\"center\"><span style=\" font-size:12pt;\">Low Cutoff Frequency</span></p></body></html>", None))
     # retranslateUi
 

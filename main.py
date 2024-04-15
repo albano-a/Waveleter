@@ -1,5 +1,7 @@
 import sys
-from PySide6.QtWidgets import QApplication, QMainWindow, QVBoxLayout, QMessageBox
+from PySide6.QtWidgets import (QApplication, QMainWindow, QVBoxLayout, 
+                              QMessageBox, QMdiSubWindow, QWidget)
+from PySide6.QtCore import Qt
 from interface.mainw import Ui_MainWindowWaveleter
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg, NavigationToolbar2QT
 from matplotlib.figure import Figure
@@ -12,28 +14,14 @@ class MainWin(QMainWindow, Ui_MainWindowWaveleter):
         self.setupUi(self)
         self.setWindowTitle("Waveleter")
         
-        self.figure = Figure()
-        self.canvas = FigureCanvasQTAgg(self.figure)
-        
-        # Create a QVBoxLayout within your QWidget
-        self.plotLayout = QVBoxLayout(self.frame)
-        self.plotLayout.setContentsMargins(0, 0, 0, 0)  # Remove margins
-        self.plotLayout.setSpacing(0)  # Remove spacing
-        # Add the FigureCanvasQTAgg object to the layout
-        self.plotLayout.addWidget(self.canvas)
+        # self.figure = Figure()
+        # self.canvas = FigureCanvasQTAgg(self.figure)
     
         # Set the layout of the parent widget
-        self.matplotlib_toolbar = NavigationToolbar2QT(self.canvas)
+        # self.matplotlib_toolbar = NavigationToolbar2QT(self.canvas)
         # Create a custom toolbar
         # Create a button for each function and add it to the custom toolbar
-        self.homeButton.clicked.connect(self.matplotlib_toolbar.home)
-        self.backButton.clicked.connect(self.matplotlib_toolbar.back)
-        self.forwardButton.clicked.connect(self.matplotlib_toolbar.forward)
-        self.panButton.clicked.connect(self.matplotlib_toolbar.pan)
-        self.zoomButton.clicked.connect(self.matplotlib_toolbar.zoom)
-        self.configureSubPlots.clicked.connect(self.matplotlib_toolbar.configure_subplots)
-        self.editButton.clicked.connect(self.matplotlib_toolbar.edit_parameters)
-        self.saveButton.clicked.connect(self.matplotlib_toolbar.save_figure)
+        
 
         self.actionViewSideBar.triggered.connect(self.toggleSideBar)
         self.waveletSelector.currentIndexChanged.connect(self.on_waveletSelector_changed)
@@ -43,7 +31,6 @@ class MainWin(QMainWindow, Ui_MainWindowWaveleter):
         self.plotWavButton.clicked.connect(self.plot)
 
     def plot(self):
-        self.figure.clear()
         self.high_freq = self.highFreqInput.text()
         self.low_freq = self.lowFreqInput.text()
         self.high_cutoff_freq = self.frequency3Input.text()
@@ -51,6 +38,33 @@ class MainWin(QMainWindow, Ui_MainWindowWaveleter):
         self.samples = self.samplesInput.text()
         self.dt = self.timeInput.text()
         self.wavelet = self.waveletSelector.currentText()
+        
+        # Create a new Figure and FigureCanvasQTAgg for each plot
+        self.figure = Figure()
+        self.canvas = FigureCanvasQTAgg(self.figure)
+        self.matplotlib_toolbar = NavigationToolbar2QT(self.canvas)
+        
+        self.homeButton.clicked.connect(self.matplotlib_toolbar.home)
+        self.backButton.clicked.connect(self.matplotlib_toolbar.back)
+        self.forwardButton.clicked.connect(self.matplotlib_toolbar.forward)
+        self.panButton.clicked.connect(self.matplotlib_toolbar.pan)
+        self.zoomButton.clicked.connect(self.matplotlib_toolbar.zoom)
+        self.configureSubPlots.clicked.connect(self.matplotlib_toolbar.configure_subplots)
+        self.editButton.clicked.connect(self.matplotlib_toolbar.edit_parameters)
+        self.saveButton.clicked.connect(self.matplotlib_toolbar.save_figure)
+        
+        # Crie um QWidget para conter o FigureCanvasQTAgg
+        plotWidget = QWidget()
+        plotLayout = QVBoxLayout(plotWidget)
+        plotLayout.setContentsMargins(0, 0, 0, 0)  # Remova as margens
+        plotLayout.setSpacing(0)  # Remova o espaçamento
+        # Adicione o FigureCanvasQTAgg ao layout
+        plotLayout.addWidget(self.canvas)
+
+        subWindow = QMdiSubWindow()
+        subWindow.setWidget(plotWidget)
+        self.mdiArea.addSubWindow(subWindow)
+        subWindow.show()
         
         if self.wavelet == 'Ricker':
             self.plottingRicker(

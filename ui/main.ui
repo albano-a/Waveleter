@@ -30,20 +30,7 @@ QPushButton:hover {
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
-     <widget class="QFrame" name="frame">
-      <property name="styleSheet">
-       <string notr="true">QFrame {
-	background-color: #fff;
-	border: 1px solid #212121
-}</string>
-      </property>
-      <property name="frameShape">
-       <enum>QFrame::StyledPanel</enum>
-      </property>
-      <property name="frameShadow">
-       <enum>QFrame::Raised</enum>
-      </property>
-     </widget>
+     <widget class="QMdiArea" name="mdiArea"/>
     </item>
     <item>
      <widget class="QFrame" name="frame_3">
@@ -374,7 +361,7 @@ QPushButton:hover {
               <item row="14" column="0" colspan="2">
                <widget class="QPushButton" name="plotWavButton">
                 <property name="enabled">
-                 <bool>false</bool>
+                 <bool>true</bool>
                 </property>
                 <property name="font">
                  <font>

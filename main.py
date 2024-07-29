@@ -1,5 +1,5 @@
 import sys
-from PySide6.QtWidgets import (
+from PyQt5.QtWidgets import (
     QApplication,
     QMainWindow,
     QVBoxLayout,
@@ -7,7 +7,7 @@ from PySide6.QtWidgets import (
     QMdiSubWindow,
     QWidget,
 )
-from PySide6.QtCore import Qt
+from PyQt5.QtCore import Qt
 from interface.mainw import Ui_MainWindowWaveleter
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg, NavigationToolbar2QT
 from matplotlib.figure import Figure

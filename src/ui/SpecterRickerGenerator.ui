@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>773</width>
-    <height>790</height>
+    <height>808</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -35,7 +35,7 @@
       <item row="0" column="0">
        <widget class="QTabWidget" name="tabWidget">
         <property name="currentIndex">
-         <number>1</number>
+         <number>0</number>
         </property>
         <widget class="QWidget" name="tab">
          <attribute name="title">
@@ -46,6 +46,13 @@
            <widget class="QWidget" name="srgTimePlot" native="true">
             <property name="styleSheet">
              <string notr="true">QWidget {border: 1px solid #000; background: white}</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0" alignment="Qt::AlignLeft">
+           <widget class="QPushButton" name="srgSaveImagePushButton">
+            <property name="text">
+             <string>Save Image</string>
             </property>
            </widget>
           </item>
@@ -74,47 +81,7 @@
       <property name="topMargin">
        <number>0</number>
       </property>
-      <item row="3" column="0">
-       <widget class="QLabel" name="label_2">
-        <property name="text">
-         <string>Samples:</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="0">
-       <widget class="QLabel" name="label_4">
-        <property name="text">
-         <string>This window allows users to create and visualize Ricker wavelets. </string>
-        </property>
-        <property name="wordWrap">
-         <bool>true</bool>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="0">
-       <widget class="QLineEdit" name="srgPeakFrequencyInput"/>
-      </item>
       <item row="4" column="0">
-       <widget class="QLineEdit" name="srgSamplesInput"/>
-      </item>
-      <item row="1" column="0">
-       <widget class="QLabel" name="label">
-        <property name="text">
-         <string>Peak Frequency:</string>
-        </property>
-       </widget>
-      </item>
-      <item row="5" column="0">
-       <widget class="QLabel" name="label_3">
-        <property name="text">
-         <string>Time (ms):</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item row="8" column="0">
        <widget class="QPushButton" name="srgGenerateWaveletPushButton">
         <property name="minimumSize">
          <size>
@@ -127,17 +94,84 @@
         </property>
        </widget>
       </item>
-      <item row="0" column="1" rowspan="7">
+      <item row="0" column="1" rowspan="3">
        <widget class="QTableWidget" name="srgTableDataViewer"/>
       </item>
-      <item row="6" column="0">
-       <widget class="QLineEdit" name="srgTimeInput"/>
-      </item>
-      <item row="8" column="1">
-       <widget class="QPushButton" name="pushButton">
+      <item row="4" column="1" alignment="Qt::AlignRight">
+       <widget class="QPushButton" name="srgExportWaveletPushButton">
+        <property name="minimumSize">
+         <size>
+          <width>150</width>
+          <height>0</height>
+         </size>
+        </property>
         <property name="text">
          <string>Export Wavelet Data</string>
         </property>
+        <property name="default">
+         <bool>false</bool>
+        </property>
+        <property name="flat">
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0" rowspan="3">
+       <widget class="QGroupBox" name="groupBox">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="title">
+         <string>Configurations</string>
+        </property>
+        <layout class="QGridLayout" name="gridLayout_6">
+         <item row="0" column="0">
+          <widget class="QLabel" name="label_4">
+           <property name="text">
+            <string>This window allows users to create and visualize Ricker wavelets. </string>
+           </property>
+           <property name="wordWrap">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <widget class="QLabel" name="label">
+           <property name="text">
+            <string>Peak Frequency:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="0">
+          <widget class="QLineEdit" name="srgPeakFrequencyInput"/>
+         </item>
+         <item row="3" column="0">
+          <widget class="QLabel" name="label_2">
+           <property name="text">
+            <string>Samples:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="0">
+          <widget class="QLineEdit" name="srgSamplesInput"/>
+         </item>
+         <item row="5" column="0">
+          <widget class="QLabel" name="label_3">
+           <property name="text">
+            <string>Time (ms):</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="6" column="0">
+          <widget class="QLineEdit" name="srgTimeInput"/>
+         </item>
+        </layout>
        </widget>
       </item>
      </layout>

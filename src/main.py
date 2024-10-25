@@ -6,6 +6,7 @@ def main():
     app = QApplication([])
 
     controller = SpecterMainWindow()
+    app.setStyle("Fusion")
     app.exec()
 
 
